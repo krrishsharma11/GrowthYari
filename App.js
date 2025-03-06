@@ -1,20 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import FirstScreen from './Screens/FirstScreen';
+import SecondScreen from './Screens/SecondScreen';
+import ThirdScreen from './Screens/ThirdScreen';
+import LoginScreen from './Screens/LoginScreen';
+import LogIn1Screen from './Screens/LogIn1Screen';
+import SignUpScreen from './Screens/SignUpScreen';
+import OtpScreen from './Screens/OtpScreen';
+import VerifyOtp from './Screens/VerifyOtp';
+import EmailOtp from './Screens/EmailOtp';
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="FirstScreen" component={FirstScreen} />
+        <Stack.Screen name="SecondScreen" component={SecondScreen} />
+        <Stack.Screen name="ThirdScreen" component={ThirdScreen} />
+        <Stack.Screen name="LoginScreen" component={LoginScreen} />
+        <Stack.Screen name="LogIn1Screen" component={LogIn1Screen} />
+        <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
+        <Stack.Screen name="OtpScreen" component={OtpScreen} />
+        <Stack.Screen name="VerifyOtp" component={VerifyOtp} />
+        <Stack.Screen name="EmailOtp" component={EmailOtp} />
+        
+       
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
