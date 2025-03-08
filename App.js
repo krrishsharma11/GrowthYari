@@ -17,8 +17,8 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName='(Tab)navigator'>
-        <Stack.Screen name="(Tab)navigator" component={BottomTabNavigator} />
+      <Stack.Navigator screenOptions={{ headerShown: false }}  >
+        {/* <Stack.Screen name="(Tab)navigator" component={BottomTabNavigator} /> */}
         <Stack.Screen name="FirstScreen" component={FirstScreen} />
         <Stack.Screen name="SecondScreen" component={SecondScreen} />
         <Stack.Screen name="ThirdScreen" component={ThirdScreen} />
@@ -28,6 +28,7 @@ export default function App() {
         <Stack.Screen name="OtpScreen" component={OtpScreen} />
         <Stack.Screen name="VerifyOtp" component={VerifyOtp} />
         <Stack.Screen name="EmailOtp" component={EmailOtp} />
+        <Stack.Screen name="BottomTabNavigator" component={BottomTabNavigator} />
 
 
       </Stack.Navigator>
