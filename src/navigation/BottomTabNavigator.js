@@ -25,7 +25,7 @@ const BottomTabNavigator = () => {
             iconName = 'person'
           }
           else if (route.name === 'MentorShip') {
-            iconName =  'people' 
+            iconName = 'people'
           }
 
           return <Ionicons name={iconName} size={size} color={color} />;
