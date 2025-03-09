@@ -2,14 +2,16 @@ import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
 import { Ionicons } from "@expo/vector-icons"; // Using Expo Icons
 import Header from "../components/Header";
+import { useNavigation } from "@react-navigation/core";
 
 const ConnectCard = ({ user }) => {
+    const navigation = useNavigation();
     return (
         <View style={styles.container}>
             {/* Header with Close Button */}
             {/* <Image style={{ height: "100", width: "100", position: "absolute", top: 10 }} source={require("../../assets/logo1.png")} /> */}
             <Image source={require("../../assets/paymentHeader.png")} style={styles.image} />
-            <TouchableOpacity style={{ position: "absolute", top: 20, right: 20 }}>
+            <TouchableOpacity style={{ position: "absolute", top: 20, right: 20 }} onPress={() => navigation.goBack()}>
                 <Ionicons name="close" size={24} color="white" />
             </TouchableOpacity>
 

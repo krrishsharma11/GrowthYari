@@ -1,8 +1,10 @@
 import React from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import { FontAwesome, Feather } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/core";
 
 const Header = ({ logo = false }) => {
+    const navigation = useNavigation();
     return (
         <View
             style={{
@@ -34,7 +36,7 @@ const Header = ({ logo = false }) => {
                 <TouchableOpacity>
                     <FontAwesome name="comment-o" size={24} color="black" />
                 </TouchableOpacity>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => navigation.navigate("notification")}>
                     <FontAwesome name="bell" size={24} color="black" />
                 </TouchableOpacity>
                 <TouchableOpacity>
