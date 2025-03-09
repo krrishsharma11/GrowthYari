@@ -11,7 +11,6 @@ import OtpScreen from './Screens/OtpScreen';
 import VerifyOtp from './Screens/VerifyOtp';
 import EmailOtp from './Screens/EmailOtp';
 import BottomTabNavigator from './src/navigation/BottomTabNavigator';
-import Payment from './src/HomeScreens/Payment';
 
 const Stack = createStackNavigator();
 
@@ -31,6 +30,13 @@ export default function App() {
         <Stack.Screen name="EmailOtp" component={EmailOtp} />
         <Stack.Screen name="BottomTabNavigator" component={BottomTabNavigator} />
         <Stack.Screen name="payment" component={Payment} />
+        <Stack.Screen name="MessageScreen" component={MessageScreen} />
+        <Stack.Screen name="MessageScreen1" component={MessageScreen1} />
+        <Stack.Screen name="PaymentScreen" component={PaymentScreen} />
+        <Stack.Screen name="ThankyouScreen" component={ThankyouScreen} />
+
+
+
 
       </Stack.Navigator>
     </NavigationContainer>
