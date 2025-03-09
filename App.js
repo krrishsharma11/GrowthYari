@@ -11,13 +11,14 @@ import OtpScreen from './Screens/OtpScreen';
 import VerifyOtp from './Screens/VerifyOtp';
 import EmailOtp from './Screens/EmailOtp';
 import BottomTabNavigator from './src/navigation/BottomTabNavigator';
+import Payment from './src/HomeScreens/Payment';
 
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}  >
+      <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName='BottomTabNavigator' >
         {/* <Stack.Screen name="(Tab)navigator" component={BottomTabNavigator} /> */}
         <Stack.Screen name="FirstScreen" component={FirstScreen} />
         <Stack.Screen name="SecondScreen" component={SecondScreen} />
@@ -29,7 +30,7 @@ export default function App() {
         <Stack.Screen name="VerifyOtp" component={VerifyOtp} />
         <Stack.Screen name="EmailOtp" component={EmailOtp} />
         <Stack.Screen name="BottomTabNavigator" component={BottomTabNavigator} />
-
+        <Stack.Screen name="payment" component={Payment} />
 
       </Stack.Navigator>
     </NavigationContainer>

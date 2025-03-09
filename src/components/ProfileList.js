@@ -1,14 +1,15 @@
 import React from "react";
 import { View, Text, Image, FlatList, StyleSheet, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons"; // Using expo icons
-
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import { useNavigation } from "@react-navigation/core";
 const fakeProfiles = [
     {
         id: "1",
         name: "Ruchi Yadav",
         profession: "Fashion Designer",
         profilePic: "https://randomuser.me/api/portraits/women/44.jpg",
-        mainImage: "https://randomuser.me/api/portraits/women/44.jpg",
+        mainImage: require("../../assets/girl.png"),
         time: "0:40",
     },
     {
@@ -16,7 +17,7 @@ const fakeProfiles = [
         name: "Jay Rajput",
         profession: "Architecture",
         profilePic: "https://randomuser.me/api/portraits/men/32.jpg",
-        mainImage: "https://randomuser.me/api/portraits/men/32.jpg",
+        mainImage: require("../../assets/girl.png"),
         time: "0:50",
     },
     {
@@ -24,12 +25,13 @@ const fakeProfiles = [
         name: "Aditi Sharma",
         profession: "Marketing Manager",
         profilePic: "https://randomuser.me/api/portraits/men/35.jpg",
-        mainImage: "https://randomuser.me/api/portraits/men/35.jpg",
+        mainImage: require("../../assets/girl.png"),
         time: "1:10",
     },
 ];
 
 const ProfileCard = ({ profile }) => {
+    const navigation = useNavigation();
     return (
         <View style={styles.card}>
             {/* Profile Header */}
@@ -39,14 +41,17 @@ const ProfileCard = ({ profile }) => {
                     <Text style={styles.name}>{profile.name}</Text>
                     <Text style={styles.profession}>{profile.profession}</Text>
                 </View>
-                <TouchableOpacity>
-                    <Text style={styles.connect}>Connect</Text>
-                </TouchableOpacity>
+                <View style={{ position: "absolute", right: 0 }}>
+                    <TouchableOpacity onPress={() => navigation.navigate("payment")}>
+                        <Text style={styles.connect}>Connect</Text>
+                    </TouchableOpacity>
+                </View>
+
             </View>
 
             {/* Main Image */}
             <View style={styles.imageContainer}>
-                <Image source={{ uri: profile.mainImage }} style={styles.mainImage} />
+                <Image source={profile.mainImage} style={styles.mainImage} />
                 <View style={styles.timerOverlay}>
                     <Text style={styles.timerText}>{profile.time}</Text>
                 </View>
@@ -54,8 +59,8 @@ const ProfileCard = ({ profile }) => {
 
             {/* Action Icons */}
             <View style={styles.actions}>
-                <Ionicons name="heart-outline" size={22} color="black" />
-                <Ionicons name="chatbubble-outline" size={22} color="black" />
+                <Ionicons name="heart-circle-outline" size={30} color="black" />
+                <MaterialCommunityIcons name="send-circle-outline" size={30} color="black" />
             </View>
         </View>
     );
@@ -73,19 +78,16 @@ const ProfileList = () => {
 
 const styles = StyleSheet.create({
     card: {
-        backgroundColor: "#fff",
+
         borderRadius: 10,
         marginVertical: 10,
         padding: 10,
-        shadowColor: "#000",
-        shadowOpacity: 0.1,
-        shadowOffset: { width: 0, height: 2 },
-        elevation: 3,
+
     },
     header: {
         flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between",
+        flex: 1,
+
     },
     profilePic: {
         width: 40,
@@ -112,7 +114,7 @@ const styles = StyleSheet.create({
     },
     mainImage: {
         width: "100%",
-        height: 200,
+        height: 300,
         borderRadius: 10,
         resizeMode: "contain"
 
@@ -121,18 +123,19 @@ const styles = StyleSheet.create({
         position: "absolute",
         top: 5,
         right: 5,
-        backgroundColor: "rgba(0, 0, 0, 0.5)",
+
         paddingVertical: 2,
         paddingHorizontal: 5,
         borderRadius: 5,
     },
     timerText: {
-        color: "white",
+        color: "black",
         fontSize: 12,
     },
     actions: {
         flexDirection: "row",
-        justifyContent: "space-around",
+        padding: 20,
+        gap: 8,
         paddingVertical: 8,
     },
 });

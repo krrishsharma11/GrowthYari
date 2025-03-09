@@ -1,257 +1,631 @@
 {
-  "info": {
-    "_postman_id": "e01d5b49-f5a3-4165-9ab9-eb443432d6fd",
-    "name": "TEST",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_exporter_id": "29719959"
-  },
-  "item": [
-    {
-      "name": "Auth",
-      "item": [
-        {
-          "name": "Signup",
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"fullName\":\"Aayush Shrivastava\",\r\n    \"email\":\"aayushshr18@gmail.com\"\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{prod}}/auth/v1/signup",
-              "host": ["{{prod}}"],
-              "path": ["auth", "v1", "signup"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Send OTP",
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"email\":\"aayushshr18@gmail.com\"\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{prod}}/auth/v1/sendOtp",
-              "host": ["{{prod}}"],
-              "path": ["auth", "v1", "sendOtp"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Verify OTP",
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"email\":\"aayushshr18@gmail.com\",\r\n    \"otp\":\"384136\"\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{prod}}/auth/v1/verifyOtp",
-              "host": ["{{prod}}"],
-              "path": ["auth", "v1", "verifyOtp"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "User",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjdjMTZhOTUzNzA2MTA3ZWU3MjIyMjNjIn0sImlhdCI6MTc0MDcyOTAxMH0.jsMCz4vKRDLsv_jhrn9iYvI6k652UblY5H6OoAAAdCE",
-                  "type": "string"
-                }
-              ]
-            },
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"fullName\":\"Aayush Shrivastava\",\r\n    \"email\":\"aayushshr18@gmail.com\"\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{prod}}/auth/v1/user",
-              "host": ["{{prod}}"],
-              "path": ["auth", "v1", "user"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Search User",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"fullName\":\"Aayush Shrivastava\",\r\n    \"email\":\"aayushshr18@gmail.com\"\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{prod}}/auth/v1/searchUsers?name=aayush&email=",
-              "host": ["{{prod}}"],
-              "path": ["auth", "v1", "searchUsers"],
-              "query": [
-                {
-                  "key": "name",
-                  "value": "aayush"
-                },
-                {
-                  "key": "email",
-                  "value": ""
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Edit User",
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "PATCH",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{prod}}/auth/v1/user",
-              "host": ["{{prod}}"],
-              "path": ["auth", "v1", "user"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Del User",
-          "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjdjMTZhOTUzNzA2MTA3ZWU3MjIyMjNjIn0sImlhdCI6MTc0MDcyOTAxMH0.jsMCz4vKRDLsv_jhrn9iYvI6k652UblY5H6OoAAAdCE",
-                  "type": "string"
-                }
-              ]
-            },
-            "method": "DELETE",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"fullName\":\"Aayush Shrivastava\",\r\n    \"email\":\"aayushshr18@gmail.com\"\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{prod}}/auth/v1/user/67c16a953706107ee722223c",
-              "host": ["{{prod}}"],
-              "path": ["auth", "v1", "user", "67c16a953706107ee722223c"]
-            }
-          },
-          "response": []
-        }
-      ]
-    }
-  ],
-  "auth": {
-    "type": "bearer",
-    "bearer": [
-      {
-        "key": "token",
-        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjdjMTY4OTAwYjc3ZmU2ZTExMDRiZDMzIn0sImlhdCI6MTc0MTI4ODAzMX0.O58Do9rLZ8IIMScgP4Yt9jFtnE2cB2afxqxQXVVP3IQ",
-        "type": "string"
-      }
-    ]
-  },
-  "event": [
-    {
-      "listen": "prerequest",
-      "script": {
-        "type": "text/javascript",
-        "packages": {},
-        "exec": [""]
-      }
-    },
-    {
-      "listen": "test",
-      "script": {
-        "type": "text/javascript",
-        "packages": {},
-        "exec": [""]
-      }
-    }
-  ],
-  "variable": [
-    {
-      "key": "local",
-      "value": "http://localhost:4008",
-      "type": "string"
-    },
-    {
-      "key": "prod",
-      "value": "http://api.growthyari.com",
-      "type": "string"
-    }
-  ]
+	"info": {
+		"_postman_id": "e01d5b49-f5a3-4165-9ab9-eb443432d6fd",
+		"name": "TEST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29719959"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Signup",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullName\":\"Aayush Shrivastava\",\r\n    \"email\":\"aayushshr18@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{prod}}/auth/v1/signup",
+							"host": [
+								"{{prod}}"
+							],
+							"path": [
+								"auth",
+								"v1",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send OTP",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"aayushshr18@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{prod}}/auth/v1/sendOtp",
+							"host": [
+								"{{prod}}"
+							],
+							"path": [
+								"auth",
+								"v1",
+								"sendOtp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify OTP",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"aayushshr18@gmail.com\",\r\n    \"otp\":\"384136\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{prod}}/auth/v1/verifyOtp",
+							"host": [
+								"{{prod}}"
+							],
+							"path": [
+								"auth",
+								"v1",
+								"verifyOtp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjdjMTZhOTUzNzA2MTA3ZWU3MjIyMjNjIn0sImlhdCI6MTc0MDcyOTAxMH0.jsMCz4vKRDLsv_jhrn9iYvI6k652UblY5H6OoAAAdCE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullName\":\"Aayush Shrivastava\",\r\n    \"email\":\"aayushshr18@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{prod}}/auth/v1/user",
+							"host": [
+								"{{prod}}"
+							],
+							"path": [
+								"auth",
+								"v1",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search User",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullName\":\"Aayush Shrivastava\",\r\n    \"email\":\"aayushshr18@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{prod}}/auth/v1/searchUsers?name=aayush&email=",
+							"host": [
+								"{{prod}}"
+							],
+							"path": [
+								"auth",
+								"v1",
+								"searchUsers"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "aayush"
+								},
+								{
+									"key": "email",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit User",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{prod}}/auth/v1/user",
+							"host": [
+								"{{prod}}"
+							],
+							"path": [
+								"auth",
+								"v1",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Del User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjdjMTZhOTUzNzA2MTA3ZWU3MjIyMjNjIn0sImlhdCI6MTc0MDcyOTAxMH0.jsMCz4vKRDLsv_jhrn9iYvI6k652UblY5H6OoAAAdCE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullName\":\"Aayush Shrivastava\",\r\n    \"email\":\"aayushshr18@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{prod}}/auth/v1/user/67c16a953706107ee722223c",
+							"host": [
+								"{{prod}}"
+							],
+							"path": [
+								"auth",
+								"v1",
+								"user",
+								"67c16a953706107ee722223c"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Post CRUD",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"caption\":\"This is a dummy caption post\",\r\n    \"category\":\"image\",\r\n    \"mediaUrl\":[\"https://assets.entrepreneur.com/content/3x2/2000/1597252978-GettyImages-1157948456.jpg\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/auth/v1/post",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"auth",
+								"v1",
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Like",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"aayushshr18@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/auth/v1/like/67cb32d778759088ae7fdddd",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"auth",
+								"v1",
+								"like",
+								"67cb32d778759088ae7fdddd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post by ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullName\":\"Aayush Shrivastava\",\r\n    \"email\":\"aayushshr18@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/auth/v1/post/67cb32d778759088ae7fdddd",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"auth",
+								"v1",
+								"post",
+								"67cb32d778759088ae7fdddd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Posts",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullName\":\"Aayush Shrivastava\",\r\n    \"email\":\"aayushshr18@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/auth/v1/posts",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"auth",
+								"v1",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Post",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"caption\":\"So I have changed the caption\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/auth/v1/post/67cb32d778759088ae7fdddd",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"auth",
+								"v1",
+								"post",
+								"67cb32d778759088ae7fdddd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Del Post",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/auth/v1/post/67cb32cc78759088ae7fddda",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"auth",
+								"v1",
+								"post",
+								"67cb32cc78759088ae7fddda"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Interests CRUD",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Machine Learning\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/auth/v1/interest",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"auth",
+								"v1",
+								"interest"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All + Search",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullName\":\"Aayush Shrivastava\",\r\n    \"email\":\"aayushshr18@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/auth/v1/interests?search=Web",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"auth",
+								"v1",
+								"interests"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "Web"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Interest",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"caption\":\"So I have changed the caption\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/auth/v1/interest/67cb32d778759088ae7fdddd",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"auth",
+								"v1",
+								"interest",
+								"67cb32d778759088ae7fdddd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Del Interst",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/auth/v1/interest/67cb32d778759088ae7fdddd",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"auth",
+								"v1",
+								"interest",
+								"67cb32d778759088ae7fdddd"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Media",
+			"item": [
+				{
+					"name": "Upload media",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "cYnJ1A4KE/Untitled.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{local}}/auth/v1/uploadMedia",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"auth",
+								"v1",
+								"uploadMedia"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjdjMTY4OTAwYjc3ZmU2ZTExMDRiZDMzIn0sImlhdCI6MTc0MTI4ODAzMX0.O58Do9rLZ8IIMScgP4Yt9jFtnE2cB2afxqxQXVVP3IQ",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "local",
+			"value": "http://localhost:4008",
+			"type": "string"
+		},
+		{
+			"key": "prod",
+			"value": "https://api.growthyari.com",
+			"type": "string"
+		}
+	]
 }
