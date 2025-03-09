@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const VerifyOtp = ({ navigation, route }) => {
   // Update to have 6 input fields instead of 4
@@ -11,10 +12,9 @@ const VerifyOtp = ({ navigation, route }) => {
 
   // Extract email from navigation params
   useEffect(() => {
-    console.log(route)
     if (route.params?.userEmail) {
       setEmail(route.params?.userEmail);
-      console.log("Email received:", email);
+      console.log("Email received:", route.params?.userEmail);
     } else {
       console.log("No email received in params");
     }
@@ -48,6 +48,9 @@ const VerifyOtp = ({ navigation, route }) => {
     setLoading(true);
 
     try {
+      // Log the request payload
+      console.log('Verifying OTP with payload:', { email, otp: otpString });
+
       // Call the verifyOtp API with email and OTP
       const response = await axios.post('http://api.growthyari.com/auth/v1/verifyOtp', {
         email: email,
@@ -58,10 +61,11 @@ const VerifyOtp = ({ navigation, route }) => {
 
       // Handle successful verification
       if (response.data && response.status === 200) {
+        await AsyncStorage.setItem('login', 'true');
         Alert.alert(
           'Success',
           'OTP verified successfully!',
-          [{ text: 'OK', onPress: () => navigation.navigate('BottomTabNavigator') }]
+          [{ text: 'OK', onPress: () => navigation.navigate('interest') }]
         );
       }
     } catch (error) {
