@@ -38,7 +38,7 @@ const ConnectCard = ({ user }) => {
             </View>
 
             {/* Pay Button */}
-            <TouchableOpacity style={styles.payButton}>
+            <TouchableOpacity style={styles.payButton} onPress={() => navigation.navigate('PaymentScreen')}>
                 <Text style={styles.payText}>Pay</Text>
             </TouchableOpacity>
 

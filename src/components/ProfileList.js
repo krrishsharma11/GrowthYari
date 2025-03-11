@@ -42,7 +42,7 @@ const ProfileCard = ({ profile }) => {
                     <Text style={styles.profession}>{profile.profession}</Text>
                 </View>
                 <View style={{ position: "absolute", right: 0 }}>
-                    <TouchableOpacity onPress={() => navigation.navigate("payment")}>
+                    <TouchableOpacity onPress={() => navigation.navigate('Payment')}>
                         <Text style={styles.connect}>Connect</Text>
                     </TouchableOpacity>
                 </View>

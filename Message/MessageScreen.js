@@ -1,7 +1,8 @@
 import React from 'react';
 import { View, Text, TextInput, FlatList, StyleSheet, Image, TouchableOpacity } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
+import Header from '../src/components/Header';
 
 const messages = [
   {
@@ -46,6 +47,14 @@ const MessageScreen = () => {
 
   return (
     <View style={styles.container}>
+      <Header/>
+        leftComponent={
+          <TouchableOpacity onPress={() => navigation.goBack()} style={styles.Backicon}>
+            <Ionicons name="arrow-back" size={24} color="black" />
+          </TouchableOpacity>
+        }
+        title="Messages"
+      
       <View style={styles.searchBar}>
         <TextInput style={styles.searchInput} placeholder="Search" />
         <Ionicons name="filter" size={24} color="black" style={styles.filterIcon} />
@@ -87,11 +96,17 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderWidth: 1,
     borderColor: '#000',
-    marginTop: 110,
+    marginTop: 40,
     borderRadius: 45,
     marginLeft: 18,
     marginRight: 18,
     marginBottom: 14,
+  },
+  Backicon:{
+    
+   marginLeft:20,
+    bottom:30
+
   },
   searchInput: {
     flex: 1,

@@ -114,7 +114,7 @@ const LogIn1Screen = ({ navigation }) => {
 
       <Text style={styles.orText}>Or</Text>
 
-      <TouchableOpacity style={styles.googleButton}>
+      <TouchableOpacity style={styles.googleButton} onPress={() => navigation.navigate('BottomTabNavigator')}>
         <FontAwesome name="google" size={20} color="blue" style={styles.googleIcon} />
         <Text style={styles.googleButtonText}>Continue with Google</Text>
       </TouchableOpacity>

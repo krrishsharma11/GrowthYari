@@ -3,9 +3,10 @@ import { View, Text, TextInput, Image, TouchableOpacity, ScrollView } from "reac
 import { FontAwesome, Ionicons } from "@expo/vector-icons";
 import InfoCard from "../components/InforCard";
 import Header from "../components/Header";
+import { useNavigation } from "@react-navigation/core";
 
 export default function Mentorship() {
-  // Fake data for InfoCard
+  const navigation = useNavigation();
   const infoCards = [
     {
       title: "Rojgar Karobar",
@@ -23,7 +24,7 @@ export default function Mentorship() {
       image: require("../../assets/rozgar.png"), // Replace with your actual image path
     },
   ];
-
+     
   return (
     <ScrollView style={{ flex: 1, backgroundColor: "#fff", padding: 10 }}>
       {/* Header */}
@@ -47,18 +48,24 @@ export default function Mentorship() {
       {/* Know More About Us */}
       <Text style={{ fontSize: 18, fontWeight: "bold", marginBottom: 10 }}>Know More About Us</Text>
       <View style={{ flexDirection: "row", justifyContent: "space-between", marginBottom: 15 }}>
-        <View style={{ borderColor: "grey", borderWidth: 2, backgroundColor: "#2C47350F", alignItems: "center", padding: 10, borderRadius: 10, flex: 1, marginRight: 5 }}>
-          <FontAwesome name="book" size={30} color="orange" />
-          <Text>Programs</Text>
-        </View>
-        <View style={{ borderColor: "grey", borderWidth: 2, backgroundColor: "#2C47350F", alignItems: "center", padding: 10, borderRadius: 10, flex: 1, marginRight: 5 }}>
-          <FontAwesome name="calendar" size={30} color="red" />
-          <Text>Events & Hackathons</Text>
-        </View>
-        <View style={{ borderColor: "grey", borderWidth: 2, backgroundColor: "#2C47350F", alignItems: "center", padding: 10, borderRadius: 10, flex: 1 }}>
-          <FontAwesome name="users" size={30} color="green" />
-          <Text>Communities</Text>
-        </View>
+        <TouchableOpacity onPress={() => navigation.navigate('ProgramScreen')}>
+          <View style={{ borderColor: "grey", borderWidth: 2, backgroundColor: "#2C47350F", alignItems: "center", padding: 10, borderRadius: 10, flex: 1, marginRight: 5 }}>
+            <FontAwesome name="book" size={30} color="orange" />
+            <Text>Programs</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('EventScreen')}>
+          <View style={{ borderColor: "grey", borderWidth: 2, backgroundColor: "#2C47350F", alignItems: "center", padding: 10, borderRadius: 10, flex: 1, marginRight: 5 }}>
+            <FontAwesome name="calendar" size={30} color="red" />
+            <Text>Events & Hackathons</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <View style={{ borderColor: "grey", borderWidth: 2, backgroundColor: "#2C47350F", alignItems: "center", padding: 10, borderRadius: 10, flex: 1 }}>
+            <FontAwesome name="users" size={30} color="green" />
+            <Text>Communities</Text>
+          </View>
+        </TouchableOpacity>
       </View>
 
 
