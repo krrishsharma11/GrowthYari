@@ -42,6 +42,8 @@ const BottomTabNavigator = () => {
       <Tab.Screen name="YariConnect" component={YariConnect} options={{ headerShown: false }} />
       <Tab.Screen name="MentorShip" component={Mentorship} options={{ headerShown: false }} />
       <Tab.Screen name="Profile" component={Profile} options={{ headerShown: false }} />
+     
+
     </Tab.Navigator>
   );
 };

@@ -33,7 +33,7 @@ const Header = ({ logo = false }) => {
 
             {/* Icons */}
             <View style={{ flexDirection: "row", alignItems: "right", gap: 15, }}>
-                <TouchableOpacity>
+                <TouchableOpacity  onPress={() => navigation.navigate('MessageScreen')}>
                     <FontAwesome name="comment-o" size={24} color="black" />
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => navigation.navigate("notification")}>
