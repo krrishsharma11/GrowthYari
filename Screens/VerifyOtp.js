@@ -52,7 +52,7 @@ const VerifyOtp = ({ navigation, route }) => {
       console.log('Verifying OTP with payload:', { email, otp: otpString });
 
       // Call the verifyOtp API with email and OTP
-      const response = await axios.post('http://api.growthyari.com/auth/v1/verifyOtp', {
+      const response = await axios.post('https://api.growthyari.com/auth/v1/verifyOtp', {
         email: email,
         otp: otpString
       });
@@ -62,6 +62,7 @@ const VerifyOtp = ({ navigation, route }) => {
       // Handle successful verification
       if (response.data && response.status === 200) {
         await AsyncStorage.setItem('login', 'true');
+        await AsyncStorage.setItem('KEY_ACCESS_TOKEN', response.data.userToken);
         Alert.alert(
           'Success',
           'OTP verified successfully!',
@@ -86,7 +87,7 @@ const VerifyOtp = ({ navigation, route }) => {
     }
 
     try {
-      const response = await axios.post('http://api.growthyari.com/auth/v1/sendOtp', {
+      const response = await axios.post('https://api.growthyari.com/auth/v1/sendOtp', {
         email: email
       });
 

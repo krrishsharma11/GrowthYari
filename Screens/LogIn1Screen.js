@@ -20,7 +20,7 @@ const LogIn1Screen = ({ navigation }) => {
 
     try {
       // Call the sendOtp API
-      const response = await axios.post('http://api.growthyari.com/auth/v1/sendOtp', {
+      const response = await axios.post('https://api.growthyari.com/auth/v1/sendOtp', {
         email: email
       });
 

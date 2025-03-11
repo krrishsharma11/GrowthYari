@@ -24,7 +24,7 @@ const SignUpScreen = ({ navigation }) => {
     setLoading(true);
 
     try {
-      const response = await axios.post('http://api.growthyari.com/auth/v1/signup', {
+      const response = await axios.post('https://api.growthyari.com/auth/v1/signup', {
         fullName: fullName,
         email: email,
         // You can add these fields if your API accepts them
