@@ -6,6 +6,7 @@ import Home from '../HomeScreens/Home';
 import YariConnect from '../HomeScreens/YariConnect';
 import Mentorship from '../HomeScreens/Mentorship';
 import Profile from '../HomeScreens/Profile';
+import CreatePost from '../HomeScreens/CreatePost';
 
 const Tab = createBottomTabNavigator();
 
@@ -27,6 +28,9 @@ const BottomTabNavigator = () => {
           else if (route.name === 'MentorShip') {
             iconName = 'people'
           }
+          else if (route.name === 'CreatePost') {
+            iconName = 'add-circle-outline'
+          }
 
           return <Ionicons name={iconName} size={size} color={color} />;
         },
@@ -40,9 +44,10 @@ const BottomTabNavigator = () => {
     >
       <Tab.Screen name="Home" component={Home} options={{ headerShown: false }} />
       <Tab.Screen name="YariConnect" component={YariConnect} options={{ headerShown: false }} />
+      <Tab.Screen name="CreatePost" component={CreatePost} options={{ headerShown: false }} />
       <Tab.Screen name="MentorShip" component={Mentorship} options={{ headerShown: false }} />
       <Tab.Screen name="Profile" component={Profile} options={{ headerShown: false }} />
-     
+
 
     </Tab.Navigator>
   );

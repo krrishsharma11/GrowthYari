@@ -76,7 +76,8 @@ const ProfileList = () => {
 
         try {
             console.log("Fetching posts data...");
-            const response = await axiosClient.get(url);
+            const response = await axiosClient.get(url,
+            );
 
             if (response.data && response.status === 200) {
                 // Extract the posts array from the response

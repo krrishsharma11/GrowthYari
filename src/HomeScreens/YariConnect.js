@@ -47,7 +47,7 @@ const YariConnect = () => {
     return (
         <ScrollView style={{ flex: 1, backgroundColor: "#fff" }}>
             <Header />
-            <View style={{ marginTop: 30 }}>
+            <View style={{}}>
                 <View style={styles.cardVedio}>
                     {/* Profile Header */}
                     <View style={styles.header}>
@@ -77,7 +77,7 @@ const YariConnect = () => {
                         <MaterialCommunityIcons name="send-circle-outline" size={30} color="black" />
                     </View>
                 </View>
-                <View>
+                <View style={{ marginTop: -30 }}>
                     <Text style={{ padding: 20, fontSize: 18, fontWeight: "400", marginTop: 16 }}>More Videos of Anuj</Text>
                     <View style={styles.container}>
 
@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         padding: 20,
         gap: 8,
-        paddingVertical: 8,
+        paddingVertical: 3,
     },
     container: {
         paddingVertical: 6,

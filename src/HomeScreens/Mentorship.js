@@ -24,7 +24,7 @@ export default function Mentorship() {
       image: require("../../assets/rozgar.png"), // Replace with your actual image path
     },
   ];
-     
+
   return (
     <ScrollView style={{ flex: 1, backgroundColor: "#fff", padding: 10 }}>
       {/* Header */}
@@ -37,12 +37,15 @@ export default function Mentorship() {
       </View>
 
       {/* Banner Section */}
-      <View style={{ backgroundColor: "#2d6a4f", borderRadius: 10, padding: 15, marginBottom: 15 }}>
-        <Text style={{ color: "white", fontSize: 18, fontWeight: "bold" }}>Grow together, succeed together</Text>
-        <Text style={{ color: "white", marginBottom: 10 }}>Connect, share, and grow with like-minded individuals.</Text>
-        <TouchableOpacity style={{ backgroundColor: "white", padding: 8, borderRadius: 5, alignSelf: "flex-start" }}>
-          <Text style={{ color: "#2d6a4f", fontWeight: "bold" }}>Expert Advice</Text>
-        </TouchableOpacity>
+      <View style={{ backgroundColor: "#2d6a4f", borderRadius: 10, padding: 15, marginBottom: 15, flexDirection: "row", alignItems: "center" }}>
+        <View style={{ flex: 1 }}>
+          <Text style={{ color: "white", fontSize: 18, fontWeight: "bold" }}>Grow together, succeed together</Text>
+          <Text style={{ color: "white", marginBottom: 10 }}>Connect, share, and grow with like-minded individuals.</Text>
+          <TouchableOpacity style={{ backgroundColor: "white", padding: 8, borderRadius: 5, alignSelf: "flex-start" }}>
+            <Text style={{ color: "#2d6a4f", fontWeight: "bold" }}>Expert Advice</Text>
+          </TouchableOpacity>
+        </View>
+        <Image source={require("../../assets/mentorshipGirl.png")} style={{ width: 100, height: 180, borderRadius: 10, position: "absolute", right: 0, top: -45 }} />
       </View>
 
       {/* Know More About Us */}
@@ -76,6 +79,7 @@ export default function Mentorship() {
         <TouchableOpacity style={{ backgroundColor: "white", padding: 8, borderRadius: 5, alignSelf: "flex-start", marginTop: 10 }}>
           <Text style={{ color: "#2d6a4f", fontWeight: "bold" }}>Join Community</Text>
         </TouchableOpacity>
+        <Image source={require("../../assets/mentorshipRobot.png")} style={{ width: 100, height: 180, borderRadius: 10, position: "absolute", right: 0, top: -20 }} />
       </View>
 
       {/* Mentorship Section */}

@@ -58,6 +58,8 @@ const styles = StyleSheet.create({
     container: {
         paddingVertical: 20,
         backgroundColor: "#fff",
+        marginTop: -20
+
     },
     heading: {
         fontSize: 18,
