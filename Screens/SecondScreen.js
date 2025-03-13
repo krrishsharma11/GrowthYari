@@ -8,7 +8,7 @@ export default function SecondScreen() {
   useEffect(() => {
     setTimeout(() => {
       navigation.navigate('ThirdScreen');
-    }, 2000); // 2 seconds delay
+    });
   }, []);
 
   return <View style={styles.container} />;
@@ -17,6 +17,6 @@ export default function SecondScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#2C4735',
+
   },
 });

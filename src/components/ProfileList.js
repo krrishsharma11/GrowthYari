@@ -75,14 +75,14 @@ const ProfileList = () => {
         setLoading(true);
 
         try {
-            console.log("Fetching posts data...");
+
             const response = await axiosClient.get(url,
             );
 
             if (response.data && response.status === 200) {
                 // Extract the posts array from the response
                 if (response.data.posts && Array.isArray(response.data.posts)) {
-                    console.log("Posts data set:", response.data.posts);
+
                     setData(response.data.posts); // Set the posts array to state
                 } else {
                     console.warn("Unexpected data format - posts array not found:", response.data);

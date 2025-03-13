@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
+import { useAuthStore } from "../Zustland/store";
 
-const UserDetail = ({ name = "Yash" }) => {
+const UserDetail = () => {
+    const { user, initUser } = useAuthStore();
+    useEffect(() => {
+        initUser()
+        console.log(user);
+
+    }, [])
     return (
         <View style={styles.container}>
-            <Text style={styles.greeting}>Hello {name},</Text>
+            <Text style={styles.greeting}>Hello {user?.user?.fullName},</Text>
             <Text style={styles.subText}>Welcome to GrowthYari !</Text>
         </View>
     );

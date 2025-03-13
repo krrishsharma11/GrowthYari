@@ -2,15 +2,15 @@ import React, { useState, useRef, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useAuthStore } from '../src/Zustland/store';
 
 const VerifyOtp = ({ navigation, route }) => {
-  // Update to have 6 input fields instead of 4
   const [otp, setOtp] = useState(['', '', '', '', '', '']);
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const inputRefs = useRef([]);
+  const { setUser, user } = useAuthStore();
 
-  // Extract email from navigation params
   useEffect(() => {
     if (route.params?.userEmail) {
       setEmail(route.params?.userEmail);
@@ -31,10 +31,8 @@ const VerifyOtp = ({ navigation, route }) => {
   };
 
   const handleVerify = async () => {
-    // Join the OTP array into a string
     const otpString = otp.join('');
 
-    // Basic validation
     if (otpString.length !== 6) {
       Alert.alert('Error', 'Please enter the complete 6-digit OTP');
       return;
@@ -48,10 +46,8 @@ const VerifyOtp = ({ navigation, route }) => {
     setLoading(true);
 
     try {
-      // Log the request payload
       console.log('Verifying OTP with payload:', { email, otp: otpString });
 
-      // Call the verifyOtp API with email and OTP
       const response = await axios.post('https://api.growthyari.com/auth/v1/verifyOtp', {
         email: email,
         otp: otpString
@@ -59,10 +55,13 @@ const VerifyOtp = ({ navigation, route }) => {
 
       console.log('OTP verification response:', response.data);
 
-      // Handle successful verification
       if (response.data && response.status === 200) {
         await AsyncStorage.setItem('login', 'true');
         await AsyncStorage.setItem('KEY_ACCESS_TOKEN', response.data.userToken);
+
+        setUser(response.data);
+        console.log("User data after setting:", response.data);
+
         Alert.alert(
           'Success',
           'OTP verified successfully!',
@@ -72,7 +71,6 @@ const VerifyOtp = ({ navigation, route }) => {
     } catch (error) {
       console.error('OTP verification error:', error);
 
-      // Display error message
       const errorMessage = error.response?.data?.message || 'Invalid OTP. Please try again.';
       Alert.alert('Verification Failed', errorMessage);
     } finally {

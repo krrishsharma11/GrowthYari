@@ -13,11 +13,11 @@ export const axiosClient = axios.create({
 axiosClient.interceptors.request.use(async (request) => {
     try {
         const accessToken = await AsyncStorage.getItem('KEY_ACCESS_TOKEN'); // Get token from AsyncStorage
-        console.log('accessToken', accessToken);
+
         if (accessToken) {
             request.headers["Authorization"] = `Bearer ${accessToken}`; // Set Authorization header
         }
-        console.log('Request:', request);
+
     } catch (error) {
         console.error('Error retrieving access token:', error);
     }

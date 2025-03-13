@@ -81,8 +81,8 @@ const LogIn1Screen = ({ navigation }) => {
         onChangeText={setEmail}
       />
 
-      <Text style={styles.label}>Password</Text>
-      <View style={styles.passwordContainer}>
+      {/* <Text style={styles.label}>Password</Text> */}
+      {/* <View style={styles.passwordContainer}>
         <TextInput
           style={styles.passwordInput}
           placeholder="Password"
@@ -96,7 +96,7 @@ const LogIn1Screen = ({ navigation }) => {
         >
           <Entypo name={passwordVisible ? 'eye-with-line' : 'eye'} size={20} color="gray" />
         </TouchableOpacity>
-      </View>
+      </View> */}
 
       <TouchableOpacity>
         <Text style={styles.forgotPassword}>Forgot Password?</Text>
@@ -114,7 +114,7 @@ const LogIn1Screen = ({ navigation }) => {
 
       <Text style={styles.orText}>Or</Text>
 
-      <TouchableOpacity style={styles.googleButton} onPress={() => navigation.navigate('BottomTabNavigator')}>
+      <TouchableOpacity style={styles.googleButton} onPress={() => { console.log('google') }}>
         <FontAwesome name="google" size={20} color="blue" style={styles.googleIcon} />
         <Text style={styles.googleButtonText}>Continue with Google</Text>
       </TouchableOpacity>
