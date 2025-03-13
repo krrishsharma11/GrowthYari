@@ -1,23 +1,34 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, KeyboardAvoidingView, Alert } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, KeyboardAvoidingView, Alert, Modal } from 'react-native';
 import { FontAwesome, Entypo } from '@expo/vector-icons'; // Import the FontAwesome and Entypo icons from Expo
 import axios from 'axios';
 import { ScrollView } from 'react-native-gesture-handler';
+import CalendarPicker from 'react-native-calendar-picker';
+import moment from 'moment';
+
 const SignUpScreen = ({ navigation }) => {
-  const [passwordVisible, setPasswordVisible] = useState(false);
   const [birthDate, setBirthDate] = useState('');
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [password, setPassword] = useState('');
+  const [showCalendar, setShowCalendar] = useState(false);
   const [loading, setLoading] = useState(false);
 
-
+  const onDateChange = (date) => {
+    setBirthDate(moment(date).format('YYYY-MM-DD'));
+    setShowCalendar(false);
+  };
 
   const handleSignUp = async () => {
     // Basic validation
-    if (!fullName || !email || !password) {
+    if (!fullName || !email || !phoneNumber || !birthDate) {
       Alert.alert('Error', 'Please fill in all required fields');
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      Alert.alert('Error', 'Please enter a valid email address');
       return;
     }
 
@@ -27,10 +38,8 @@ const SignUpScreen = ({ navigation }) => {
       const response = await axios.post('https://api.growthyari.com/auth/v1/signup', {
         fullName: fullName,
         email: email,
-        // You can add these fields if your API accepts them
         phone: phoneNumber,
         birthDate: birthDate,
-        password: password
       });
 
       console.log('Signup response:', response.data);
@@ -66,14 +75,10 @@ const SignUpScreen = ({ navigation }) => {
           <Text style={styles.heading}>Create an Account</Text>
 
           <Text style={styles.label}>Full Name</Text>
-          <TextInput style={styles.input} placeholder="Full Name" onChangeText={(text) => {
-            setFullName(text);
-          }} />
+          <TextInput style={styles.input} placeholder="Full Name" onChangeText={(text) => setFullName(text)} />
 
           <Text style={styles.label}>Email</Text>
-          <TextInput style={styles.input} placeholder="Email" keyboardType="email-address" onChangeText={(text) => {
-            setEmail(text);
-          }} />
+          <TextInput style={styles.input} placeholder="Email" keyboardType="email-address" onChangeText={(text) => setEmail(text)} />
 
           <Text style={styles.label}>Birth Date</Text>
           <View style={styles.birthDateContainer}>
@@ -81,37 +86,17 @@ const SignUpScreen = ({ navigation }) => {
               style={styles.birthDateInput}
               placeholder="Birth Date"
               value={birthDate}
-              onChangeText={setBirthDate}
+              editable={false} // Make the text input read-only
             />
-            <TouchableOpacity style={styles.calendarIcon}>
+            <TouchableOpacity style={styles.calendarIcon} onPress={() => setShowCalendar(true)}>
               <FontAwesome name="calendar" size={20} color="gray" />
             </TouchableOpacity>
           </View>
 
           <Text style={styles.label}>Phone Number</Text>
-          <TextInput style={styles.input} placeholder="Phone Number" keyboardType="phone-pad" onChangeText={(text) => {
-            setPhoneNumber(text);
-          }} />
+          <TextInput style={styles.input} placeholder="Phone Number" keyboardType="phone-pad" onChangeText={(text) => setPhoneNumber(text)} />
 
-          <Text style={styles.label}>Password</Text>
-          <View style={styles.passwordContainer}>
-            <TextInput
-              style={styles.passwordInput}
-              placeholder="Password"
-              secureTextEntry={!passwordVisible}
-              onChangeText={(text) => {
-                setPassword(text);
-              }}
-            />
-            <TouchableOpacity
-              style={styles.eyeIcon}
-              onPress={() => setPasswordVisible(!passwordVisible)}
-            >
-              <Entypo name={passwordVisible ? 'eye-with-line' : 'eye'} size={20} color="gray" />
-            </TouchableOpacity>
-          </View>
-
-          <TouchableOpacity style={styles.signUpButton} onPress={() => handleSignUp()}>
+          <TouchableOpacity style={styles.signUpButton} onPress={handleSignUp}>
             <Text style={styles.signUpButtonText}>Sign Up</Text>
           </TouchableOpacity>
           <Text style={styles.orText}>Or</Text>
@@ -122,6 +107,15 @@ const SignUpScreen = ({ navigation }) => {
           <TouchableOpacity onPress={() => navigation.navigate('Login')}>
             <Text style={styles.loginText} onPress={() => navigation.navigate('LogIn1Screen')}>Already have an account? Log In.</Text>
           </TouchableOpacity>
+
+          <Modal visible={showCalendar} animationType="slide" transparent={false}>
+            <View style={styles.calendarModal}>
+              <CalendarPicker onDateChange={onDateChange} />
+              <TouchableOpacity style={styles.closeButton} onPress={() => setShowCalendar(false)}>
+                <Text style={styles.closeButtonText}>Close</Text>
+              </TouchableOpacity>
+            </View>
+          </Modal>
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
@@ -175,22 +169,6 @@ const styles = StyleSheet.create({
   calendarIcon: {
     marginLeft: 10,
   },
-  passwordContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderColor: '#ccc',
-    borderWidth: 1,
-    borderRadius: 5,
-    paddingHorizontal: 10,
-    marginBottom: 20,
-  },
-  passwordInput: {
-    flex: 1,
-    height: 50,
-  },
-  eyeIcon: {
-    marginLeft: 10,
-  },
   signUpButton: {
     height: 50,
     backgroundColor: '#2C4735',
@@ -231,6 +209,22 @@ const styles = StyleSheet.create({
   loginText: {
     textAlign: 'center',
     color: '#4285F4',
+  },
+  calendarModal: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(255, 253, 253, 0.5)',
+  },
+  closeButton: {
+    marginTop: 20,
+    padding: 10,
+    backgroundColor: '#fff',
+    borderRadius: 5,
+  },
+  closeButtonText: {
+    color: '#4285F4',
+    fontSize: 16,
   },
 });
 

@@ -11,7 +11,7 @@ const Header = ({ logo = false }) => {
                 flexDirection: "row",
                 alignItems: "center",
                 justifyContent: "space-between",
-                padding: 15,
+                padding: 7,
                 backgroundColor: "white",
                 marginTop: "9%",
             }}
@@ -33,7 +33,7 @@ const Header = ({ logo = false }) => {
 
             {/* Icons */}
             <View style={{ flexDirection: "row", alignItems: "right", gap: 15, }}>
-                <TouchableOpacity  onPress={() => navigation.navigate('MessageScreen')}>
+                <TouchableOpacity onPress={() => navigation.navigate('MessageScreen')}>
                     <FontAwesome name="comment-o" size={24} color="black" />
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => navigation.navigate("notification")}>
