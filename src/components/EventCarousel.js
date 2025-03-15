@@ -1,51 +1,62 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, Image, FlatList, StyleSheet, Dimensions } from "react-native";
+import { axiosClient } from "./axiosClient";
+import { useAnimatedKeyboard } from "react-native-reanimated";
 
 const { width } = Dimensions.get("window");
 
-const peopleData = [
-    {
-        id: "1",
-        name: "Divyam Pathak",
-        age: 25,
-        profession: "UI/UX Designer",
-        location: "Lives in Mumbai",
-        image: require("../../assets/girl.png"),
-    },
-    {
-        id: "2",
-        name: "Arnav Sharma",
-        age: 28,
-        profession: "Graphic Designer",
-        location: "Lives in Faridabad",
-        image: require("../../assets/clock.png"),
-    },
-    {
-        id: "3",
-        name: "Aashi Agarawal",
-        age: 24,
-        profession: "Lawyer",
-        location: "Lives in Delhi",
-        image: require("../../assets/girl.png"),
-    },
-];
+const url = "auth/v1/interestedPeoples"; // Use relative URL since baseURL is set in axiosClient
+
+
+
+let profession = "Lawyer";
+let location = "Lives in Delhi";
+let image = require("../../assets/girl.png");
+
 
 const PeopleCarousel = () => {
+    const [peoples, setPeoples] = useState([])
+    const [loading, setLoading] = useState(false);
+
+    const getPeoples = async () => {
+        setLoading(true);
+
+        try {
+
+            const response = await axiosClient.get(url,
+            );
+
+            if (response.status === 200) {
+                // Extract the posts array from the response
+
+                setPeoples(response.data?.users);
+            }
+        } catch (error) {
+            console.error('Unable to load posts:', error);
+            setData(fakeProfiles); // Use fallback data on error
+        } finally {
+            setLoading(false);
+        }
+    }
+    useEffect(() => {
+        getPeoples();
+        console.log("peoples", peoples)
+    }, [])
     return (
         <View style={styles.container}>
             <Text style={styles.heading}>People You might be interested in !</Text>
             <FlatList
-                data={peopleData}
+                data={peoples}
                 horizontal
                 showsHorizontalScrollIndicator={false}
                 keyExtractor={(item) => item.id}
                 renderItem={({ item }) => (
                     <View style={styles.card}>
-                        <Image source={item.image} style={styles.image} />
+                        <Image source={image} style={styles.image} />
                         <View style={styles.overlay}>
-                            <Text style={styles.name}>{item.name} <Text style={styles.age}>{item.age}</Text></Text>
-                            <Text style={styles.profession}>{item.profession}</Text>
-                            <Text style={styles.location}>{item.location}</Text>
+                            <Text style={styles.name}>{item.fullName} </Text>
+                            <Text style={styles.profession}>{profession}</Text>
+                            <Text style={styles.location}>{location}</Text>
                         </View>
                     </View>
                 )}
