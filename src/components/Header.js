@@ -11,9 +11,9 @@ const Header = ({ logo = false }) => {
                 flexDirection: "row",
                 alignItems: "center",
                 justifyContent: "space-between",
-                padding: 7,
+                padding: 4,
                 backgroundColor: "white",
-                marginTop: "9%",
+                marginTop: "8%",
             }}
         >
             {/* Logo & Name */}

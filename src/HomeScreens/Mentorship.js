@@ -45,7 +45,7 @@ export default function Mentorship() {
             <Text style={{ color: "#2d6a4f", fontWeight: "bold" }}>Expert Advice</Text>
           </TouchableOpacity>
         </View>
-        <Image source={require("../../assets/mentorshipGirl.png")} style={{ width: 100, height: 180, borderRadius: 10, position: "absolute", right: 0, top: -45 }} />
+        <Image source={require("../../assets/mentorshipGirl.png")} style={{ width: 100, height: 165, borderRadius: 10, position: "absolute", right: 0, top: -45 }} />
       </View>
 
       {/* Know More About Us */}
