@@ -1,34 +1,34 @@
-import React, { useEffect, useState } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { ActivityIndicator, View } from 'react-native';
+import React, { useEffect, useState } from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { ActivityIndicator, View } from "react-native";
 
-import FirstScreen from './Screens/FirstScreen';
-import SecondScreen from './Screens/SecondScreen';
-import ThirdScreen from './Screens/ThirdScreen';
-import LoginScreen from './Screens/LoginScreen';
-import LogIn1Screen from './Screens/LogIn1Screen';
-import SignUpScreen from './Screens/SignUpScreen';
-import OtpScreen from './Screens/OtpScreen';
-import VerifyOtp from './Screens/VerifyOtp';
-import EmailOtp from './Screens/EmailOtp';
-import BottomTabNavigator from './src/navigation/BottomTabNavigator';
-import MessageScreen from './Message/MessageScreen';
-import MessageScreen1 from './Message/MessageScreen1';
-import PaymentScreen from './Payment/PaymentScreen';
-import ThankyouScreen from './Payment/ThankyouScreen';
-import Payment from './src/HomeScreens/Payment';
-import InterestsScreen from './Screens/Interest';
-import NotificationScreen from './Screens/Notification';
-import EventScreen from './Events/EventScreen';
-import EventDetails from './Events/EventDetails';
-import EventScreen1 from './Events/EventScreen1';
-import EventScreen2 from './Events/EventScreen2';
-import EventScreen3 from './Events/EventScreen3';
-import ThanksScreen from './Events/ThanksScreen';
-import ProgramScreen from './Events/ProgramScreen';
-import EditProfile from './src/ProfileDetail/EditProfile';
+import FirstScreen from "./Screens/FirstScreen";
+import SecondScreen from "./Screens/SecondScreen";
+import ThirdScreen from "./Screens/ThirdScreen";
+import LoginScreen from "./Screens/LoginScreen";
+import LogIn1Screen from "./Screens/LogIn1Screen";
+import SignUpScreen from "./Screens/SignUpScreen";
+import OtpScreen from "./Screens/OtpScreen";
+import VerifyOtp from "./Screens/VerifyOtp";
+import EmailOtp from "./Screens/EmailOtp";
+import BottomTabNavigator from "./src/navigation/BottomTabNavigator";
+import MessageScreen from "./Message/MessageScreen";
+import MessageScreen1 from "./Message/MessageScreen1";
+import PaymentScreen from "./Payment/PaymentScreen";
+import ThankyouScreen from "./Payment/ThankyouScreen";
+import Payment from "./src/HomeScreens/Payment";
+import InterestsScreen from "./Screens/Interest";
+import NotificationScreen from "./Screens/Notification";
+import EventScreen from "./Events/EventScreen";
+import EventDetails from "./Events/EventDetails";
+import EventScreen1 from "./Events/EventScreen1";
+import EventScreen2 from "./Events/EventScreen2";
+import EventScreen3 from "./Events/EventScreen3";
+import ThanksScreen from "./Events/ThanksScreen";
+import ProgramScreen from "./Events/ProgramScreen";
+import EditProfile from "./src/ProfileDetail/EditProfile";
 
 const Stack = createStackNavigator();
 
@@ -39,10 +39,10 @@ export default function App() {
   useEffect(() => {
     const checkLoginStatus = async () => {
       try {
-        const value = await AsyncStorage.getItem('login');
+        const value = await AsyncStorage.getItem("login");
         setUser(value);
       } catch (error) {
-        console.error('Error checking login status:', error);
+        console.error("Error checking login status:", error);
       } finally {
         setLoading(false);
       }
@@ -53,7 +53,7 @@ export default function App() {
 
   if (loading) {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <ActivityIndicator size="large" color="#0000ff" />
       </View>
     );
@@ -61,7 +61,10 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName={user ? "BottomTabNavigator" : "FirstScreen"}>
+      <Stack.Navigator
+        screenOptions={{ headerShown: false }}
+        initialRouteName={user ? "BottomTabNavigator" : "FirstScreen"}
+      >
         <Stack.Screen name="FirstScreen" component={FirstScreen} />
         <Stack.Screen name="SecondScreen" component={SecondScreen} />
         <Stack.Screen name="ThirdScreen" component={ThirdScreen} />
@@ -71,7 +74,10 @@ export default function App() {
         <Stack.Screen name="OtpScreen" component={OtpScreen} />
         <Stack.Screen name="VerifyOtp" component={VerifyOtp} />
         <Stack.Screen name="EmailOtp" component={EmailOtp} />
-        <Stack.Screen name="BottomTabNavigator" component={BottomTabNavigator} />
+        <Stack.Screen
+          name="BottomTabNavigator"
+          component={BottomTabNavigator}
+        />
         <Stack.Screen name="notification" component={NotificationScreen} />
         <Stack.Screen name="interest" component={InterestsScreen} />
         <Stack.Screen name="Payment" component={Payment} />
@@ -87,8 +93,6 @@ export default function App() {
         <Stack.Screen name="ThanksScreen" component={ThanksScreen} />
         <Stack.Screen name="ProgramScreen" component={ProgramScreen} />
         <Stack.Screen name="EditProfile" component={EditProfile} />
-
-
       </Stack.Navigator>
     </NavigationContainer>
   );
