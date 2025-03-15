@@ -28,7 +28,10 @@ import EventScreen2 from "./Events/EventScreen2";
 import EventScreen3 from "./Events/EventScreen3";
 import ThanksScreen from "./Events/ThanksScreen";
 import ProgramScreen from "./Events/ProgramScreen";
-import EditProfile from "./src/ProfileDetail/EditProfile";
+import MyConnectionScreen from "./Screens/ProfileDetailsScreens/MyConnectionScreen";
+import MyContentScreen from "./Screens/ProfileDetailsScreens/MyContentScreen";
+import MyEventsScreen from "./Screens/ProfileDetailsScreens/MyEventsScreen";
+import HostedEventScreen from "./Screens/ProfileDetailsScreens/HostedEventScreen";
 
 const Stack = createStackNavigator();
 
@@ -92,7 +95,13 @@ export default function App() {
         <Stack.Screen name="EventScreen3" component={EventScreen3} />
         <Stack.Screen name="ThanksScreen" component={ThanksScreen} />
         <Stack.Screen name="ProgramScreen" component={ProgramScreen} />
-        <Stack.Screen name="EditProfile" component={EditProfile} />
+        <Stack.Screen
+          name="MyConnectionScreen"
+          component={MyConnectionScreen}
+        />
+        <Stack.Screen name="MyContentScreen" component={MyContentScreen} />
+        <Stack.Screen name="MyEventsScreen" component={MyEventsScreen} />
+        <Stack.Screen name="HostedEventScreen" component={HostedEventScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
