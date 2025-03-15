@@ -4,7 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 // Load saved user data from AsyncStorage
 const loadUser = async () => {
     const storedUser = await AsyncStorage.getItem('auth-user');
-    console.log("Stored User", JSON.parse(storedUser));
+    console.log("Stored User", storedUser);
     return storedUser ? JSON.parse(storedUser) : null;
 };
 
